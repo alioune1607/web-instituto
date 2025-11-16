@@ -1,0 +1,17 @@
+.header-banner {
+  background-image: url('/img/fondo-header.jpg'); 
+  
+  background-size: cover;    
+  background-position: center; 
+
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  border-bottom: 5px solid #00aaff;
+}
+
+.header-banner h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
