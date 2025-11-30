@@ -1,6 +1,6 @@
 /* src/App.css */
 #root {
-  /* ¡Eliminar o comentar estas líneas para ocupar el 100% del ancho! */
+  /* ESTAS LÍNEAS FUERON ELIMINADAS O COMENTADAS: */
   /* max-width: 1280px; */ 
   /* margin: 0 auto; */
   
@@ -8,39 +8,43 @@
   text-align: center;
 }
 
-/* El resto de tu código CSS para logos y cards... */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* --- Estilos para la Actividad JSON --- */
+.hero-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-table caption {
+    font-weight: bold;
+    padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-table th, .hero-table td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+}
+.hero-table tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.card {
-  padding: 2em;
+
+.hero-list {
+    text-align: left;
+    margin: 20px auto;
+    width: 60%;
+    list-style-type: none;
+    padding: 0;
 }
 
-.read-the-docs {
-  color: #888;
+.hero-list li {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background-color: #e6f7ff;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
 }
+
+/* ... el resto de tu CSS ... */

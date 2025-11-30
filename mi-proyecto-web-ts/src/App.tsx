@@ -1,5 +1,4 @@
 import React from 'react';
-// 1. Importaciones del Router
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -7,17 +6,18 @@ import { Container, Row, Col } from 'react-bootstrap';
 import HeaderComponent from './components/HeaderComponent';
 import NavigationComponent from './components/NavigationComponent';
 import SidebarComponent from './components/SidebarComponent';
-import ContentComponent from './components/ContentComponent'; // Tus Cards de héroes
+import ContentComponent from './components/ContentComponent'; 
 import FooterComponent from './components/FooterComponent';
 
-// 2. Importamos las nuevas vistas
+// Vistas Modificadas/Nuevas
 import { NoticiasLayout, Jefatura, Igualdad, Galeria, Error404 } from './components/PageViews';
+import HeroRenderer from './components/HeroRenderer';
 
 const App: React.FC = () => {
   return (
-    // 3. Envolvemos TODA la App en BrowserRouter
     <BrowserRouter>
-      <div className="App">
+      {/* FIX DE ANCHO: Garantizamos que ocupe todo el viewport */}
+      <div className="App" style={{ width: '100vw', minHeight: '100vh' }}>
         
         <HeaderComponent />
         
@@ -26,31 +26,38 @@ const App: React.FC = () => {
         <Container fluid className="p-0">
           <Row className="g-0"> 
             
-            {/* La Sidebar se queda fija a la izquierda */}
+            {/* Columna 1 (40%): Sidebar Fija */}
             <Col md={4} style={{ borderRight: '1px solid #ddd', minHeight: '80vh' }}>
               <SidebarComponent />
             </Col>
 
-            {/* Columna derecha: AQUÍ CAMBIA EL CONTENIDO SEGÚN LA RUTA */}
+            {/* Columna 2 (60%): Contenido Dinámico con Routes */}
             <Col md={8}>
               <Routes>
-                {/* Ruta Inicio: Muestra tus Cards de Héroes */}
+                {/* 1. Inicio: Muestra las Cards */}
                 <Route path="/" element={<ContentComponent />} />
 
-                {/* Ruta Galería */}
+                {/* 2. Galería (Andalucía) */}
                 <Route path="/galeria" element={<Galeria />} />
+                
+                {/* 3. Actividad JSON */}
+                <Route path="/heroes-json" element={
+                    <div className="p-4">
+                        <HeroRenderer publisher="DC Comics" />
+                        <HeroRenderer publisher="Marvel Comics" />
+                    </div>
+                } />
 
-                {/* Ruta Noticias (ANIDADA con Outlet) */}
+                {/* 4. RUTAS ANIDADAS: Noticias */}
                 <Route path="/noticias" element={<NoticiasLayout />}>
-                    {/* Al entrar en /noticias se muestra el Layout. 
-                        Si vamos a /noticias/jefatura, se inyecta Jefatura en el Outlet */}
+                    {/* Hijos de /noticias, inyectados en el Outlet */}
                     <Route path="jefatura" element={<Jefatura />} />
                     <Route path="igualdad" element={<Igualdad />} />
+                    <Route index element={<p className="mt-3">Selecciona una subsección de noticias.</p>} />
                 </Route>
 
-                {/* Ruta Contacto / Error 404 (Cualquier ruta no definida) */}
+                {/* 5. Catch-All: Para cualquier URL no definida (incluyendo /contacto) */}
                 <Route path="*" element={<Error404 />} />
-                
               </Routes>
             </Col>
 

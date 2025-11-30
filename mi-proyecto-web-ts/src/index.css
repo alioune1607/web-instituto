@@ -1,22 +1,12 @@
 /* src/index.css */
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  /* ... tus colores ... */
-}
-
-a {
-  /* ... tus estilos de enlaces ... */
-}
+/* ... tus estilos de root ... */
 
 body {
   margin: 0;
-  /* CAMBIO CLAVE: Usamos 'block' para deshabilitar el centrado de Vite */
-  display: block; 
+  display: block; /* FIX: Cambiado de flex a block */
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
 
-/* ... el resto del código ... */
+/* ... el resto de tu CSS ... */
